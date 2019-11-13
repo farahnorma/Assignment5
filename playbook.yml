@@ -6,6 +6,8 @@
   become: yes
   vars:
       - administrator_name: corpadmin
+        password: $6$hello$4.sVl2SYmubIxpHNpMEwzEngzwXlS2COCloSjBSbKzzE726M/3pN$
+  
   tasks:
       - name: Install updates
         yum: name=* state=latest
@@ -13,7 +15,7 @@
       - name: Create user
         user:
           name: "{{ administrator_name }}"
-          password: kfvkf
+          password: "{{ password }}"
 
 - name: nginxupdate
   hosts: web1
